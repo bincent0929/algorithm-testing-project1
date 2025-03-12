@@ -441,14 +441,44 @@ void multiAlgoMultiSizeTypeVectorSort() {
     // random: provides average for all the sorting methods
     // average_case_times.csv should be generated
     while (i < 50) {
+        // ********************************************************
         v1 = randomVector(vector_sizes[0], 0, vector_sizes[0]);
-        // run sorts
+        
+        start  =  chrono::high_resolution_clock::now();
+        bubbleSort(v1);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        averageCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
+
+        start  =  chrono::high_resolution_clock::now();
+        insertionSort(v1);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        averageCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
+        
+        start  =  chrono::high_resolution_clock::now();
+        selectionSort(v1);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        averageCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
+
+        start  =  chrono::high_resolution_clock::now();
+        quickSort(v1);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        averageCaseFile << "quick," << vector_sizes[0] << "," << elapsed << endl;
+
+        std::vector<int>().swap(v1); // clears the vector
+        // ********************************************************
         v2 = randomVector(vector_sizes[1], 0, vector_sizes[1]);
         // run sorts
+        // ********************************************************
         v3 = randomVector(vector_sizes[2], 0, vector_sizes[2]);
         // run sorts
+        // ********************************************************
         v4 = randomVector(vector_sizes[3], 0, vector_sizes[3]);
         // run sorts
+        // ********************************************************
         v5 = randomVector(vector_sizes[4], 0, vector_sizes[4]);
         // run sorts
 
@@ -514,5 +544,17 @@ int main() {
     srand(time(NULL));
     
     multiAlgoMultiSizeTypeVectorSort();
+
+    char userChoice;
+    cout << "Did the initial, smaller test work? (y/n): ";
+    cin >> userChoice;
+
+    if (userChoice == 'y') {
+        multiAlgoMultiSizeTypeVectorSort();
+        return 0;
+    }
+    else {
+        return 0;
+    }
 
 }
