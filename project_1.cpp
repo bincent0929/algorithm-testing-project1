@@ -593,12 +593,6 @@ void multiAlgoMultiSizeTypeVectorSort() {
     // sorted: provides best case for insertion, selection, and bubble sort
     // these should be added to the best_case_times.csv
     while (i < 50) {
-        v1 = sortedVector(vector_sizes[0]);
-        v2 = sortedVector(vector_sizes[1]);
-        v3 = sortedVector(vector_sizes[2]);
-        v4 = sortedVector(vector_sizes[3]);
-        v5 = sortedVector(vector_sizes[4]);
-
         // ********************************************************
         v1 = sortedVector(vector_sizes[0]);
         
@@ -606,19 +600,19 @@ void multiAlgoMultiSizeTypeVectorSort() {
         bubbleSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
+        bestCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
 
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
+        bestCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
         
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
+        bestCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
 
         std::vector<int>().swap(v1); // clears the vector
         // ********************************************************
@@ -628,19 +622,19 @@ void multiAlgoMultiSizeTypeVectorSort() {
         bubbleSort(v2);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "bubble," << vector_sizes[1] << "," << elapsed << endl;
+        bestCaseFile << "bubble," << vector_sizes[1] << "," << elapsed << endl;
 
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v2);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "insertion," << vector_sizes[1] << "," << elapsed << endl;
+        bestCaseFile << "insertion," << vector_sizes[1] << "," << elapsed << endl;
         
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v2);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "selection," << vector_sizes[1] << "," << elapsed << endl;
+        bestCaseFile << "selection," << vector_sizes[1] << "," << elapsed << endl;
 
         std::vector<int>().swap(v2); // clears the vector
         
@@ -651,19 +645,19 @@ void multiAlgoMultiSizeTypeVectorSort() {
         bubbleSort(v3);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "bubble," << vector_sizes[2] << "," << elapsed << endl;
+        bestCaseFile << "bubble," << vector_sizes[2] << "," << elapsed << endl;
 
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v3);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "insertion," << vector_sizes[2] << "," << elapsed << endl;
+        bestCaseFile << "insertion," << vector_sizes[2] << "," << elapsed << endl;
         
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v3);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "selection," << vector_sizes[2] << "," << elapsed << endl;
+        bestCaseFile << "selection," << vector_sizes[2] << "," << elapsed << endl;
 
         std::vector<int>().swap(v3); // clears the vector
         
@@ -674,19 +668,19 @@ void multiAlgoMultiSizeTypeVectorSort() {
         bubbleSort(v4);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "bubble," << vector_sizes[3] << "," << elapsed << endl;
+        bestCaseFile << "bubble," << vector_sizes[3] << "," << elapsed << endl;
 
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v4);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "insertion," << vector_sizes[3] << "," << elapsed << endl;
+        bestCaseFile << "insertion," << vector_sizes[3] << "," << elapsed << endl;
         
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v4);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "selection," << vector_sizes[3] << "," << elapsed << endl;
+        bestCaseFile << "selection," << vector_sizes[3] << "," << elapsed << endl;
 
         std::vector<int>().swap(v4); // clears the vector
         
@@ -697,19 +691,19 @@ void multiAlgoMultiSizeTypeVectorSort() {
         bubbleSort(v5);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "bubble," << vector_sizes[4] << "," << elapsed << endl;
+        bestCaseFile << "bubble," << vector_sizes[4] << "," << elapsed << endl;
 
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v5);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "insertion," << vector_sizes[4] << "," << elapsed << endl;
+        bestCaseFile << "insertion," << vector_sizes[4] << "," << elapsed << endl;
         
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v5);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        averageCaseFile << "selection," << vector_sizes[4] << "," << elapsed << endl;
+        bestCaseFile << "selection," << vector_sizes[4] << "," << elapsed << endl;
 
         std::vector<int>().swap(v5); // clears the vector
 
