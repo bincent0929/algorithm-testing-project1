@@ -437,10 +437,13 @@ void multiAlgoMultiSizeTypeVectorSort() {
     ofstream averageCaseFile("average_case_times.csv");
     ofstream bestCaseFile("best_case_times.csv");
 
+    cout << "Running tests..." << endl;
+
     size_t i = 0; // shared
 
     // random: provides average for all the sorting methods
     // average_case_times.csv should be generated
+    cout << "Running the algorithms on random vectors..." << endl;
     while (i < 50) {
         // ********************************************************
         v1 = randomVector(vector_sizes[0], 0, vector_sizes[0]);
@@ -588,10 +591,12 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
-    i = 0;
+    cout << "The algorithms are finished sorting the random vectors." << endl;
     
+    i = 0;
     // sorted: provides best case for insertion, selection, and bubble sort
     // these should be added to the best_case_times.csv
+    cout << "Running insertion, selection, and bubble sorts on sorted vectors..." << endl;
     while (i < 50) {
         // ********************************************************
         v1 = sortedVector(vector_sizes[0]);
@@ -709,10 +714,12 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
+    cout << "The algorithms are finished sorting the sorted vectors." << endl;
+    
     i = 0;
-
     // reversely sorted: provides worst case for insertion and bubble sort
     // should be added to the worst_case_times.csv
+    cout << "Running insertion and bubble sorts on reversely sorted vectors..." << endl;
     while (i < 50) {
         // ********************************************************
         v1 = reverseVector(vector_sizes[0]);
@@ -800,10 +807,12 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
+    cout << "The algorithms are finished sorting the reversed vectors." << endl;
+    
     i = 0;
-
     // quicksort's special: provides the best case for quick sort
     // should be added to the best_case_times.csv
+    cout << "Running quick sort on its best case vectors..." << endl;
     while (i < 50) {
         // ********************************************************
         v1 = bestCaseQuickVector(vector_sizes[0]);
@@ -861,10 +870,12 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
+    cout << "The algorithm has finished sorting its best case vectors." << endl;
+    
     i = 0;
-
     // selection's special: provides the worst case for selection sort
     // should be added to the worst_case_times.csv
+    cout << "Running selection sort on its worst case vectors..." << endl;
     while (i < 50) {
         // ********************************************************
         v1 = worstCaseSelectionVector(vector_sizes[0], 0, vector_sizes[0]);
@@ -922,6 +933,10 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
+    cout << "The algorithm has finished sorting its worst case vectors." << endl;
+
+    cout << "All case tests have been finished and the output has been saved to worst, " << 
+    "average, and best case files." << endl;
 }
 
 /**
