@@ -3,50 +3,27 @@
 #include <chrono>
 #include <vector>
 #include <iostream>
+#include <algorithm> // for swap
 
 using namespace std;
 
-/*
-* I need to change these. Apparently we do want to not change the vectors
-* we want to reuse them instead of generate new ones
-*/
-
-/****************************************************************************** 
- * sorts a vector using bubble sort algorithm
-******************************************************************************/ 
-vector<int> bubbleSort(vector<int> v) {
+template <typename T>
+vector<T> bubbleSort(std::vector<T> v) {
     bool sorted = false;
-    while (sorted == false) {
+    size_t n = v.size();
+    // note for myself:
+    // Using size_t because negative values aren't necessary here
+    while (!sorted) {
         sorted = true;
-        for (int i = 1; i <= v.size()-1; i++) {
-            if (v[i-1] > v[i]) {
-                int temp = v[i-1];
-                v[i-1] = v[i];
-                v[i] = temp;
+        for (size_t i = 0; i < n - 1; ++i) {
+            if (v[i] > v[i + 1]) {
+                swap(v[i], v[i + 1]);
                 sorted = false;
             }
         }
+        --n;
     }
-    return v;
-}
-
-/****************************************************************************** 
- * sorts a vector using bubble sort algorithm
-******************************************************************************/ 
-vector<double> bubbleSort(vector<double> v) {
-    bool sorted = false;
-    while (sorted == false) {
-        sorted = true;
-        for (int i = 1; i <= v.size()-1; i++) {
-            if (v[i-1] > v[i]) {
-                double temp = v[i-1];
-                v[i-1] = v[i];
-                v[i] = temp;
-                sorted = false;
-            }
-        }
-    }
-    return v;
+    return v
 }
 
 /****************************************************************************** 
@@ -435,7 +412,8 @@ void multiAlgoRandomFixedVectorSort() {
  * For each vector size and each type, there should be 50 generated vectors
 ******************************************************************/
 void multiAlgoMultiSizeTypeVectorSort() {
-
+    // I think I might want to split this into a couple more function
+    // a worst, average, and best one??
 }
 
 /**
