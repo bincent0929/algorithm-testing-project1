@@ -75,10 +75,11 @@ void multiAlgoFixedVectorSort() {
  * worst, average, and best-case run time testing
  * rec. sizes are 10, 100, 1000, 5000, 10000
  * he says different "types" of vectors, but I'm not sure what he means by that
+ * ok, I'm assuming that by "types" he means how sorted each is already
  * For each vector size, there should be 50 generated
 ******************************************************************/
 void multiAlgoMultiVectorSort() {
-    
+
 }
 
 
