@@ -112,8 +112,8 @@ vector<int> quickSort(vector<int> v) {
 vector<int>  randomVector(int  size,  int  low,  int  high){ 
     vector<int>  v(size,  0); 
     
-    for  (int  i =  0;  i <  size;  i++){ 
-    v[i]  =  rand()  %  (high  -  low  +1)  +  low; 
+    for  (int  i =  0; i < size;  i++){ 
+        v[i]  =  rand()  %  (high  -  low  +1)  +  low; 
     }
 
     return v;
@@ -136,8 +136,15 @@ vector<int> sortedVector(int  size) {
 /******************************************************************
  * creates a reversely sorted vector
 ******************************************************************/
-vector<int> reverseVector(int  size,  int  low,  int  high) {
+vector<int> reverseVector(int  size) {
     vector<int>  v(size,  0); 
+
+    for  (int  i = 0; i < size;  i++) { 
+        v[i]  =  size - i;
+        // puts the value of the size of the vector at 
+        // the first index and goes down from there as
+        // the index position increases
+    }
 
     return v;
 }
