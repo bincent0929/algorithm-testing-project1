@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm> // for swap
+#include <fstream> // for file output
 
 using namespace std;
 
@@ -415,27 +416,47 @@ void multiAlgoRandomFixedVectorSort() {
  * 250 reversely sorted
  * 250 best quick
  * 250 worst selection
+ * output to the file should look like this:
+ * bubble,10,7e-07
+ * insertion,10,6e-07 
+ * selection,100,2.67e-05 
+ * quick,10000,0.0143179
 ******************************************************************/
 void multiAlgoMultiSizeTypeVectorSort() {
     // I think I might want to split this into a couple more function
     // a worst, average, and best one??
     vector<size_t> vector_sizes = {10, 100, 1000, 5000, 10000};
     vector<int> v1, v2, v3, v4, v5;
-    size_t i = 0; // shared
-
-    // random: provides average for all the sorting methods
     
+    
+    chrono::high_resolution_clock::time_point start; // shared
+    chrono::high_resolution_clock::time_point  end; // shared
+    double elapsed; // shared
+
+    ofstream worstCaseFile("worst_case_times.csv");
+    ofstream averageCaseFile("average_case_times.csv");
+    ofstream bestCaseFile("best_case_times.csv");
+
+    size_t i = 0; // shared
+    // random: provides average for all the sorting methods
+    // average_case_times.csv should be generated
     while (i < 50) {
         v1 = randomVector(vector_sizes[0], 0, vector_sizes[0]);
+        // run sorts
         v2 = randomVector(vector_sizes[1], 0, vector_sizes[1]);
+        // run sorts
         v3 = randomVector(vector_sizes[2], 0, vector_sizes[2]);
+        // run sorts
         v4 = randomVector(vector_sizes[3], 0, vector_sizes[3]);
+        // run sorts
         v5 = randomVector(vector_sizes[4], 0, vector_sizes[4]);
+        // run sorts
 
         i++;
     }
     i = 0;
     // sorted: provides best case for insertion, selection, and bubble sort
+    // these should be added to the best_case_times.csv
     while (i < 50) {
         v1 = sortedVector(vector_sizes[0]);
         v2 = sortedVector(vector_sizes[1]);
@@ -447,6 +468,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
     }
     i = 0;
     // reversely sorted: provides worst case for insertion and bubble sort
+    // should be added to the worst_case_times.csv
     while (i < 50) { 
         v1 = reverseVector(vector_sizes[0]);
         v2 = reverseVector(vector_sizes[1]);
@@ -459,6 +481,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
     i = 0;
 
     // quicksort's special: provides the best case for quick sort
+    // should be added to the best_case_times.csv
     while (i < 50) {
         v1 = bestCaseQuickVector(vector_sizes[0]);
         v2 = bestCaseQuickVector(vector_sizes[1]);
@@ -471,6 +494,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
     i = 0;
 
     // selection's special: provides the worst case for selection sort
+    // should be added to the worst_case_times.csv
     while (i < 50) { 
         v1 = worstCaseSelectionVector(vector_sizes[0], 0, vector_sizes[0]);
         v2 = worstCaseSelectionVector(vector_sizes[1], 0, vector_sizes[1]);
@@ -480,7 +504,6 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         i++;
     }
-    i = 0;
 }
 
 /**
