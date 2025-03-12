@@ -67,6 +67,9 @@ vector<int> selectionSort(vector<int> v) {
 
 /****************************************************************************** 
  * sorts a vector using quick sort algorithm
+ * the pseudocode has one paramter. not sure if
+ * I should use more and use in place partitioning
+ * https://chatgpt.com/c/67c21ce7-16c0-800a-ac2a-2c53d5df4686
 ******************************************************************************/ 
 vector<int> quickSort(vector<int> v) {
     if (v.size() <= 1) {
