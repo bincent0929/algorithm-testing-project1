@@ -13,8 +13,20 @@ using namespace std;
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-void bubbleSort(vector<int> v) {
-    
+vector<int> bubbleSort(vector<int> v) {
+    bool sorted = false;
+    while (sorted == false) {
+        sorted = true;
+        for (int i=1;v.size()-1;i++) {
+            if (v[i-1] > v[i]) {
+                int temp = v[i-1];
+                v[i-1] = v[i];
+                v[i] = temp;
+                sorted = false;
+            }
+        }
+    }
+    return v;
 }
 
 /****************************************************************************** 
