@@ -25,13 +25,55 @@ cout  <<  "Sum:  "  <<  sum  <<  ";  Elapsed  time:  "  <<  elapsed  <<  endl;
 ******************************************************************************/ 
 vector<int>  randomVector(int  size,  int  low,  int  high){ 
     vector<int>  v(size,  0); 
+    
     for  (int  i =  0;  i <  size;  i++){ 
     v[i]  =  rand()  %  (high  -  low  +1)  +  low; 
-    } 
+    }
+
+    return v;
+}
+
+/******************************************************************
+ * creates a sorted vector
+******************************************************************/
+vector<int> sortedVector(int  size,  int  low,  int  high) {
+    vector<int>  v(size,  0);
+    
+    return v;
+}
+
+/******************************************************************
+ * creates a reversely sorted vector
+******************************************************************/
+vector<int> reverseVector(int  size,  int  low,  int  high) {
+    vector<int>  v(size,  0); 
+
+    return v;
+}
+
+/******************************************************************
+ * creates a vector that has a pivot around the middle of the array
+ * this is required for the best case vector type for quick sort
+******************************************************************/
+vector<int> bestCaseQuickVector(int  size,  int  low,  int  high) {
+    vector<int>  v(size,  0); 
+
+    return v;
+}
+
+/******************************************************************
+ * creates a vector that has a pivot that splits the array as uneven as possible
+ * one side has one value and the other has all the rest
+ * this is required for the worst case vector type for quick sort
+******************************************************************/
+vector<int> worstCaseQuickVector(int  size,  int  low,  int  high) {
+    vector<int>  v(size,  0); 
+
     return v;
 }
 
 /****************************************************************** 
+ * THIS MIGHT NEED TO BE CHANGED
 *  Calculate  the  sample  standard  deviation  of  a  vector  of  doubles  * 
 *  v  - const  vector<double>  - a  vector  of  doubles * 
 *  return  - double  - the  sample  standard  deviation  of  v * 
@@ -60,13 +102,13 @@ bool vectorSortCheck(const vector<int> v) {
 }
 
 /******************************************************************
- * fixed vector length algorithm testing
+ * fixed random value vector length algorithm testing
  * creates 10 random vectors of length 100
  * runs each sorting algorithm on each of the vectors
  * collects the run times for each and verfies whether the vectors are sorted
  * prints the min, mean, standard dev., and max run time
 ******************************************************************/
-void multiAlgoFixedVectorSort() {
+void multiAlgoRandomFixedVectorSort() {
 
 }
 
@@ -88,10 +130,10 @@ void multiAlgoFixedVectorSort() {
     * quick: 
         * best|"when pivot equally cuts the array ~equally" 
         * worst|"when one subarray is size one and the other is n-1 (has all the other values)"
- * For each vector size, there should be 50 generated
+ * For each vector size and each type, there should be 50 generated vectors
 ******************************************************************/
-void multiAlgoMultiVectorSort() {
-
+void multiAlgoMultiSizeTypeVectorSort() {
+    
 }
 
 
