@@ -107,10 +107,10 @@ vector<int> quickSort(vector<int> v) {
  * return  -  vector<int>  -  a  vector  of  random  integers
 ******************************************************************************/ 
 vector<int>  randomVector(const int  size,  int  low,  int  high){ 
-    vector<int>  v(size,  0);
+    vector<int>  v(size, 0);
     
     for  (int  i =  0; i < size;  i++){ 
-        v[i]  =  rand()  %  (high  -  low  +1)  +  low; 
+        v[i] = rand() % (high - low + 1) + low; 
     }
 
     return v;
@@ -410,10 +410,77 @@ void multiAlgoRandomFixedVectorSort() {
         * best|"when pivot equally cuts the array ~equally" 
         * worst|"when one subarray is size one and the other is n-1 (has all the other values)"
  * For each vector size and each type, there should be 50 generated vectors
+ * 250 random
+ * 250 sorted
+ * 250 reversely sorted
+ * 250 best quick
+ * 250 worst selection
 ******************************************************************/
 void multiAlgoMultiSizeTypeVectorSort() {
     // I think I might want to split this into a couple more function
     // a worst, average, and best one??
+    vector<size_t> vector_sizes = {10, 100, 1000, 5000, 10000};
+    vector<int> v1, v2, v3, v4, v5;
+    size_t i = 0; // shared
+
+    // random: provides average for all the sorting methods
+    
+    while (i < 50) {
+        v1 = randomVector(vector_sizes[0], 0, vector_sizes[0]);
+        v2 = randomVector(vector_sizes[1], 0, vector_sizes[1]);
+        v3 = randomVector(vector_sizes[2], 0, vector_sizes[2]);
+        v4 = randomVector(vector_sizes[3], 0, vector_sizes[3]);
+        v5 = randomVector(vector_sizes[4], 0, vector_sizes[4]);
+
+        i++;
+    }
+    i = 0;
+    // sorted: provides best case for insertion, selection, and bubble sort
+    while (i < 50) {
+        v1 = sortedVector(vector_sizes[0]);
+        v2 = sortedVector(vector_sizes[1]);
+        v3 = sortedVector(vector_sizes[2]);
+        v4 = sortedVector(vector_sizes[3]);
+        v5 = sortedVector(vector_sizes[4]);
+
+        i++;
+    }
+    i = 0;
+    // reversely sorted: provides worst case for insertion and bubble sort
+    while (i < 50) { 
+        v1 = reverseVector(vector_sizes[0]);
+        v2 = reverseVector(vector_sizes[1]);
+        v3 = reverseVector(vector_sizes[2]);
+        v4 = reverseVector(vector_sizes[3]);
+        v5 = reverseVector(vector_sizes[4]);
+
+        i++;
+    }
+    i = 0;
+
+    // quicksort's special: provides the best case for quick sort
+    while (i < 50) {
+        v1 = bestCaseQuickVector(vector_sizes[0]);
+        v2 = bestCaseQuickVector(vector_sizes[1]);
+        v3 = bestCaseQuickVector(vector_sizes[2]);
+        v4 = bestCaseQuickVector(vector_sizes[3]);
+        v5 = bestCaseQuickVector(vector_sizes[4]);
+
+        i++;
+    }
+    i = 0;
+
+    // selection's special: provides the worst case for selection sort
+    while (i < 50) { 
+        v1 = worstCaseSelectionVector(vector_sizes[0], 0, vector_sizes[0]);
+        v2 = worstCaseSelectionVector(vector_sizes[1], 0, vector_sizes[1]);
+        v3 = worstCaseSelectionVector(vector_sizes[2], 0, vector_sizes[2]);
+        v4 = worstCaseSelectionVector(vector_sizes[3], 0, vector_sizes[3]);
+        v5 = worstCaseSelectionVector(vector_sizes[4], 0, vector_sizes[4]);
+
+        i++;
+    }
+    i = 0;
 }
 
 /**
