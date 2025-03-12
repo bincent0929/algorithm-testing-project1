@@ -102,12 +102,12 @@ vector<int> quickSort(vector<int> v) {
     return sortedA;
 }
 
-/****************************************************************************** 
-*  Generate  a  vector  of  random  integers  in  a  given  range.  The  ends * 
-*  of  this  range  are  inclusive. * 
-*  size  -  int  -  the  number  of  integers  in  the  resulting  vector * 
-*  low,  high  - int  - the  range  from  which  to draw  random  integers  (inclusive) * 
-*  return  -  vector<int>  -  a  vector  of  random  integers * 
+/******************************************************************************
+ * Generate  a  vector  of  random  integers  in  a  given  range.  The  ends
+ * of  this  range  are  inclusive.
+ * size  -  int  -  the  number  of  integers  in  the  resulting  vector
+ * low,  high  - int  - the  range  from  which  to draw  random  integers  (inclusive)
+ * return  -  vector<int>  -  a  vector  of  random  integers
 ******************************************************************************/ 
 vector<int>  randomVector(int  size,  int  low,  int  high){ 
     vector<int>  v(size,  0); 
@@ -156,16 +156,19 @@ vector<int> reverseVector(int  size) {
 vector<int> bestCaseQuickVector(int  size,  int  low,  int  high) {
     vector<int>  v(size,  0); 
 
+
+
     return v;
 }
 
 /******************************************************************
- * creates a vector that has a pivot that splits the array as uneven as possible
- * one side has one value and the other has all the rest
- * this is required for the worst case vector type for quick sort
+ * Creates a worst case vector for the selection sort algorithm
+ * needs to create a vector like: {2,4,6,8,9,7,5,3,1}
 ******************************************************************/
-vector<int> worstCaseQuickVector(int  size,  int  low,  int  high) {
+vector<int> worstCaseSelectionVector(int  size,  int  low,  int  high) {
     vector<int>  v(size,  0); 
+
+
 
     return v;
 }
@@ -245,7 +248,17 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
 }
 
-
+/**
+ * Each of the types of vectors should be called 250 times in total
+ * With each vector length having 50 vectors each
+ */
 int main() {
     srand(time(NULL));
+    
+    for (int i = 0; i < 250; i++) {
+        for (int j = 0; j < 5; j++) {
+            
+        }
+    }
+
 }
