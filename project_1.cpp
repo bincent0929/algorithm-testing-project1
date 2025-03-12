@@ -14,7 +14,7 @@ using namespace std;
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-vector<int> bubbleSort(vector<int> v) {
+vector<int> bubbleSort(const vector<int> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
@@ -33,7 +33,7 @@ vector<int> bubbleSort(vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-vector<double> bubbleSort(vector<double> v) {
+vector<double> bubbleSort(const vector<double> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
@@ -52,7 +52,7 @@ vector<double> bubbleSort(vector<double> v) {
 /****************************************************************************** 
  * sorts a vector using insertion sort algorithm
 ******************************************************************************/ 
-vector<int> insertionSort(vector<int> v) {
+vector<int> insertionSort(const vector<int> v) {
     int i = 1;
     while (i < v.size()) {
         int j = i;
@@ -70,7 +70,7 @@ vector<int> insertionSort(vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using selection sort algorithm
 ******************************************************************************/ 
-vector<int> selectionSort(vector<int> v) {
+vector<int> selectionSort(const vector<int> v) {
     for (int i = 0; i <= v.size() - 2; i++) {
         int uMin = i;
         for (int j = i+1; j <= v.size() - 1; i++) {
@@ -91,7 +91,7 @@ vector<int> selectionSort(vector<int> v) {
  * I should use more and use in place partitioning
  * https://chatgpt.com/c/67c21ce7-16c0-800a-ac2a-2c53d5df4686
 ******************************************************************************/ 
-vector<int> quickSort(vector<int> v) {
+vector<int> quickSort(const vector<int> v) {
     if (v.size() <= 1) {
         return v;
     }
@@ -129,7 +129,7 @@ vector<int> quickSort(vector<int> v) {
  * low,  high  - int  - the  range  from  which  to draw  random  integers  (inclusive)
  * return  -  vector<int>  -  a  vector  of  random  integers
 ******************************************************************************/ 
-vector<int>  randomVector(int  size,  int  low,  int  high){ 
+vector<int>  randomVector(const int  size,  int  low,  int  high){ 
     vector<int>  v(size,  0);
     
     for  (int  i =  0; i < size;  i++){ 
@@ -142,7 +142,7 @@ vector<int>  randomVector(int  size,  int  low,  int  high){
 /******************************************************************
  * creates a sorted vector
 ******************************************************************/
-vector<int> sortedVector(int  size) {
+vector<int> sortedVector(const int  size) {
     vector<int>  v(size,  0);
     
     for  (int  i =  0; i < size;  i++) { 
@@ -156,7 +156,7 @@ vector<int> sortedVector(int  size) {
 /******************************************************************
  * creates a reversely sorted vector
 ******************************************************************/
-vector<int> reverseVector(int  size) {
+vector<int> reverseVector(const int  size) {
     vector<int>  v(size,  0);
 
     for  (int  i = 0; i < size;  i++) {
@@ -195,7 +195,7 @@ void fillIdealQuickVector(vector<int>& v, int start, int end, int& current) {
  * The vector ChatGPT says it produces isn't what I'm finding it
  * produces in my head. the initial current value just is too high.
 ******************************************************************/
-vector<int> bestCaseQuickVector(int size) {
+vector<int> bestCaseQuickVector(const int size) {
     vector<int> v(size);
     int current = 1;
     fillIdealQuickVector(v, 0, size - 1, current);
@@ -213,7 +213,7 @@ vector<int> bestCaseQuickVector(int size) {
  * then subtract one if it is or continue if it isn't and start subtracting 2 from it
  * until the array is filled
 ******************************************************************/
-vector<int> worstCaseSelectionVector(int  size,  int  low,  int  high) {
+vector<int> worstCaseSelectionVector(const int  size,  int  low,  int  high) {
     vector<int>  v(size,  0);
 
     for (int i = 0; i < v.size(); i++) {
