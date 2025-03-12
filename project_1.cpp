@@ -198,8 +198,18 @@ double sampleSD(const vector<double> v){
  * returns true or false
 ******************************************************************/
 bool vectorSortCheck(const vector<int> v) {
-    
+    for (int i = 0; i < v.size() - 1; i++) {
+        if (v[i] <= v[i+1]) {
+            continue;
+        }
+        else {
+            return false;
+        }
+    }
     return true;
+
+    // 0 1 | 1 2 | 2 3
+    // for vector size 4 it goes through 3 comparisons
 }
 
 /* Possible function timing solution
