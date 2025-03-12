@@ -73,17 +73,30 @@ vector<int> quickSort(vector<int> v) {
         return v;
     }
     int pivot = v[0];
-    vector<int> A;
-    vector<int> B;
-    for (int e = 1; e ) {
-        if (e <= pivot) {
-            A.push_back(e);
+    vector<int> A, B;
+    for (int e = 1; e <= v.size() - 1; e++) {
+    // for e in rest(v)
+    // not sure if the for loop is correctly
+    // this is correctly implemented I think
+        if (v[e] <= pivot) {
+            A.push_back(v[e]);
+            // moves lower than pivot to A
         }
         else {
-            B.push_back(e);
+            B.push_back(v[e]);
+            // moves higher than pivot to B
         }
     }
-    return quickSort(A) + pivot + quickSort(B);
+    vector<int> sortedA = quickSort(A);
+    vector<int> sortedB = quickSort(B);
+    // sorts A and B
+
+    sortedA.push_back(pivot);
+    sortedA.insert(sortedA.end(), sortedB.begin(), sortedB.end());
+    // adds the pivot to A and then adds B to A
+    // leaves as A as the final vector to be returned
+
+    return sortedA;
 }
 
 /****************************************************************************** 
