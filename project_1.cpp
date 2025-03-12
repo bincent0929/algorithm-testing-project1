@@ -122,9 +122,14 @@ vector<int>  randomVector(int  size,  int  low,  int  high){
 /******************************************************************
  * creates a sorted vector
 ******************************************************************/
-vector<int> sortedVector(int  size,  int  low,  int  high) {
+vector<int> sortedVector(int  size) {
     vector<int>  v(size,  0);
     
+    for  (int  i =  0; i < size;  i++) { 
+        v[i]  =  i + 1;
+        // makes the index number and it's value equal
+    }
+
     return v;
 }
 
