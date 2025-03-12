@@ -214,10 +214,20 @@ vector<int> bestCaseQuickVector(int size) {
  * until the array is filled
 ******************************************************************/
 vector<int> worstCaseSelectionVector(const int  size,  int  low,  int  high) {
-    vector<int>  v(size,  0);
+    vector<int> v(size);
+    int mid = size / 2;
+    int value = low;
 
-    for (int i = 0; i < v.size(); i++) {
-        
+    // fills the first half of the vector with ascending values
+    for (int i = 0; i <= mid; i++) {
+        v[i] = value;
+        value += (high-low) / size;
+    }
+
+    // fills the second half of the vector with descending values
+    for (int i = mid + 1; i < size; i++) {
+        value -= (high - low) / size;
+        v[i] = value;
     }
 
     return v;
