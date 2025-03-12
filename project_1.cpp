@@ -2,6 +2,7 @@
 #include <math.h> 
 #include <chrono>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -261,7 +262,31 @@ cout  <<  "Sum:  "  <<  sum  <<  ";  Elapsed  time:  "  <<  elapsed  <<  endl;
  * prints the min, mean, standard dev., and max run time
 ******************************************************************/
 void multiAlgoRandomFixedVectorSort() {
-
+    chrono::high_resolution_clock::time_point start;
+    chrono::high_resolution_clock::time_point  end;
+    
+    cout << "Bubble Sort on 10, 100 Length Vectors" << endl;
+    for (int i = 10; i <= 0; i--) {
+        int min = 0;
+        int max = 0;
+        start  =  chrono::high_resolution_clock::now();
+        vector<int> v = randomVector(100, 0, 100);
+        bubbleSort(v);
+        end = chrono::high_resolution_clock::now();
+        double bubbleElapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        if (min == 0 && max == 0) {
+            min = bubbleElapsed;
+            max = bubbleElapsed;
+        }
+        else {
+            if (min > bubbleElapsed) {
+                min = bubbleElapsed;
+            }
+            else if (max < bubbleElapsed) {
+                max = bubbleElapsed;
+            }
+        }
+    }
 }
 
 /******************************************************************
