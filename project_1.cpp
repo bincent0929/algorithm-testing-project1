@@ -151,6 +151,8 @@ vector<int> reverseVector(int  size) {
 
 //****************************************************************************************
 // ChatGPT's BS for the lower two functions: https://chatgpt.com/share/67c7733d-51cc-800a-8424-41e646e837a3
+// ok, so apparently a high and low input is fine for the function. So I will defintely need
+// to work on this.
 /**
  * This is a helper function to allow for just size to be input into the
  * function below. I don't think these are correct yet. I need to put more
@@ -184,11 +186,19 @@ vector<int> bestCaseQuickVector(int size) {
 /******************************************************************
  * Creates a worst case vector for the selection sort algorithm
  * needs to create a vector like: {2,4,6,8,9,7,5,3,1}
+ * ascending even numbers followed by descending odd numbers
+ * my idea is to fill it with evens by added 2 each time and
+ * then once the value hits the value of the size of the array
+ * to have it determine if the array value is even or odd,
+ * then subtract one if it is or continue if it isn't and start subtracting 2 from it
+ * until the array is filled
 ******************************************************************/
 vector<int> worstCaseSelectionVector(int  size,  int  low,  int  high) {
     vector<int>  v(size,  0);
 
-
+    for (int i = 0; i < v.size(); i++) {
+        
+    }
 
     return v;
 }
