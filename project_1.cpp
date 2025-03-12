@@ -5,6 +5,39 @@
 
 using namespace std;
 
+/*
+* Each sorting function is pass by reference and void because there's 
+* no reason to keep the unsorted vector after processing
+*/
+
+/****************************************************************************** 
+ * sorts a vector using bubble sort algorithm
+******************************************************************************/ 
+void bubbleSort(vector<int> &v) {
+    
+}
+
+/****************************************************************************** 
+ * sorts a vector using insertion sort algorithm
+******************************************************************************/ 
+void insertionSort(vector<int> &v) {
+    
+}
+
+/****************************************************************************** 
+ * sorts a vector using selection sort algorithm
+******************************************************************************/ 
+void selectionSort(vector<int> &v) {
+    
+}
+
+/****************************************************************************** 
+ * sorts a vector using quick sort algorithm
+******************************************************************************/ 
+void quickSort(vector<int> &v) {
+    
+}
+
 /* Possible function timing solution
 chrono::high_resolution_clock::time_point start; 
 chrono::high_resolution_clock::time_point  end; 
@@ -133,7 +166,7 @@ void multiAlgoRandomFixedVectorSort() {
  * For each vector size and each type, there should be 50 generated vectors
 ******************************************************************/
 void multiAlgoMultiSizeTypeVectorSort() {
-    
+
 }
 
 
