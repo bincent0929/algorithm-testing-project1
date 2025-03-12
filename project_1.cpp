@@ -50,14 +50,25 @@ vector<int> insertionSort(vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using selection sort algorithm
 ******************************************************************************/ 
-void selectionSort(vector<int> v) {
-    
+vector<int> selectionSort(vector<int> v) {
+    for (int i = 0; v.size() - 2; i++) {
+        int uMin = i;
+        for (int j = i+1; v.size() - 1; i++) {
+            if (v[j] < v[uMin]) {
+                uMin = j;
+            }
+        }
+        int temp = v[i];
+        v[i] = v[uMin];
+        v[uMin] = temp;
+    }
+    return v;
 }
 
 /****************************************************************************** 
  * sorts a vector using quick sort algorithm
 ******************************************************************************/ 
-void quickSort(vector<int> v) {
+vector<int> quickSort(vector<int> v) {
     
 }
 
