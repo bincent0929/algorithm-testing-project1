@@ -14,7 +14,7 @@ using namespace std;
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-vector<int> bubbleSort(const vector<int> v) {
+vector<int> bubbleSort(vector<int> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
@@ -33,7 +33,7 @@ vector<int> bubbleSort(const vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-vector<double> bubbleSort(const vector<double> v) {
+vector<double> bubbleSort(vector<double> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
@@ -52,7 +52,7 @@ vector<double> bubbleSort(const vector<double> v) {
 /****************************************************************************** 
  * sorts a vector using insertion sort algorithm
 ******************************************************************************/ 
-vector<int> insertionSort(const vector<int> v) {
+vector<int> insertionSort(vector<int> v) {
     int i = 1;
     while (i < v.size()) {
         int j = i;
@@ -70,7 +70,7 @@ vector<int> insertionSort(const vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using selection sort algorithm
 ******************************************************************************/ 
-vector<int> selectionSort(const vector<int> v) {
+vector<int> selectionSort(vector<int> v) {
     for (int i = 0; i <= v.size() - 2; i++) {
         int uMin = i;
         for (int j = i+1; j <= v.size() - 1; i++) {
@@ -91,7 +91,7 @@ vector<int> selectionSort(const vector<int> v) {
  * I should use more and use in place partitioning
  * https://chatgpt.com/c/67c21ce7-16c0-800a-ac2a-2c53d5df4686
 ******************************************************************************/ 
-vector<int> quickSort(const vector<int> v) {
+vector<int> quickSort(vector<int> v) {
     if (v.size() <= 1) {
         return v;
     }
@@ -195,7 +195,7 @@ void fillIdealQuickVector(vector<int>& v, int start, int end, int& current) {
  * The vector ChatGPT says it produces isn't what I'm finding it
  * produces in my head. the initial current value just is too high.
 ******************************************************************/
-vector<int> bestCaseQuickVector(const int size) {
+vector<int> bestCaseQuickVector(int size) {
     vector<int> v(size);
     int current = 1;
     fillIdealQuickVector(v, 0, size - 1, current);
@@ -305,7 +305,8 @@ void multiAlgoRandomFixedVectorSort() {
     mean = mean / times.size(); 
     standardD = sampleSD(times);
 
-    cout << "Minimum: " << times[0] << " sec; Mean:" << mean << "sec; Standard Deviation: " << standardD << " sec; Maximum: " << times[times.size() - 1] << " sec";
+    cout << "Minimum: " << times[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    << standardD << " sec; Maximum: " << times[times.size() - 1] << " sec";
 }
 
 /******************************************************************
