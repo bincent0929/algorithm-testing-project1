@@ -268,6 +268,7 @@ bool vectorSortCheck(const vector<int> v) {
     }
     return true;
 
+    // this is just a note for me
     // 0 1 | 1 2 | 2 3
     // for vector size 4 it goes through 3 comparisons
 }
@@ -304,33 +305,62 @@ void multiAlgoRandomFixedVectorSort() {
     cout << "Sorting Algorithm on 10, 100 Length Vectors" << endl;
     for (int i = 0; i < 10; i++) {
         vector<int> v = randomVector(100, 0, 100);
+        vector<int> sortedV;
 
         start  =  chrono::high_resolution_clock::now();
-        bubbleSort(v);
+        sortedV = bubbleSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         bubbleTimes[i] = elapsed;
-
+        if (vectorSortCheck(sortedV)) {
+            cout << "Current Bubble sort succeeded" << endl;
+        }
+        else {
+            cout << "The current Bubble sort failed" << endl;
+            return;
+        }
+        
         vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
-        insertionSort(v);
+        sortedV = insertionSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         insertTimes[i] = elapsed;
+        if (vectorSortCheck(sortedV)) {
+            cout << "Current Insertion sort succeeded" << endl;
+        }
+        else {
+            cout << "The current Insertion sort failed" << endl;
+            return;
+        }
 
         vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
-        selectionSort(v);
+        sortedV = selectionSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         selectTimes[i] = elapsed;
+        if (vectorSortCheck(sortedV)) {
+            cout << "Current Selection sort succeeded" << endl;
+        }
+        else {
+            cout << "The current Selection sort failed" << endl;
+            return;
+        }
 
         vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
-        quickSort(v);
+        sortedV = quickSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         quickTimes[i] = elapsed;
+        if (vectorSortCheck(sortedV)) {
+            cout << "Current Quick sort succeeded" << endl;
+        }
+        else {
+            cout << "The current Quick sort failed" << endl;
+            return;
+        }
     }
 
     // processing the time data and outputting
@@ -343,6 +373,7 @@ void multiAlgoRandomFixedVectorSort() {
     standardD = sampleSD(bubbleTimes);
 
     cout << "Bubble sort on 10 vectors of length 100" << endl;
+    cout << "All sorting was successful for Bubble sort" << endl;
     cout << "Minimum: " << bubbleTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << bubbleTimes[9] << " sec" << endl;
 
@@ -355,6 +386,7 @@ void multiAlgoRandomFixedVectorSort() {
     standardD = sampleSD(insertTimes);
 
     cout << "Insertion sort on 10 vectors of length 100" << endl;
+    cout << "All sorting was successful for Insertion sort" << endl;
     cout << "Minimum: " << insertTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << insertTimes[9] << " sec" << endl;
 
@@ -367,6 +399,7 @@ void multiAlgoRandomFixedVectorSort() {
     standardD = sampleSD(selectTimes);
 
     cout << "Selection sort on 10 vectors of length 100" << endl;
+    cout << "All sorting was successful for Selection sort" << endl;
     cout << "Minimum: " << selectTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << selectTimes[9] << " sec" << endl;
 
@@ -379,6 +412,7 @@ void multiAlgoRandomFixedVectorSort() {
     standardD = sampleSD(quickTimes);
 
     cout << "Quick sort on 10 vectors of length 100" << endl;
+    cout << "All sorting was successful for Quick sort" << endl;
     cout << "Minimum: " << quickTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << quickTimes[9] << " sec" << endl;
 }
@@ -414,10 +448,6 @@ void multiAlgoMultiSizeTypeVectorSort() {
 int main() {
     srand(time(NULL));
     
-    for (int i = 0; i < 250; i++) {
-        for (int j = 0; j < 5; j++) {
-            
-        }
-    }
+    multiAlgoMultiSizeTypeVectorSort();
 
 }
