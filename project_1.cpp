@@ -304,8 +304,8 @@ void multiAlgoRandomFixedVectorSort() {
     
     cout << "Sorting Algorithm on 10, 100 Length Vectors" << endl;
     for (int i = 0; i < 10; i++) {
-        vector<int> v = randomVector(100, 0, 100);
-        vector<int> sortedV;
+        vector<int> v = randomVector(100, 0, 100); // shared
+        vector<int> sortedV; // shared
 
         start  =  chrono::high_resolution_clock::now();
         sortedV = bubbleSort(v);
@@ -320,7 +320,6 @@ void multiAlgoRandomFixedVectorSort() {
             return;
         }
         
-        vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
         sortedV = insertionSort(v);
         end = chrono::high_resolution_clock::now();
@@ -334,7 +333,6 @@ void multiAlgoRandomFixedVectorSort() {
             return;
         }
 
-        vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
         sortedV = selectionSort(v);
         end = chrono::high_resolution_clock::now();
@@ -348,7 +346,6 @@ void multiAlgoRandomFixedVectorSort() {
             return;
         }
 
-        vector<int> v = randomVector(100, 0, 100);
         start  =  chrono::high_resolution_clock::now();
         sortedV = quickSort(v);
         end = chrono::high_resolution_clock::now();
