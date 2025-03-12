@@ -291,32 +291,96 @@ cout  <<  "Sum:  "  <<  sum  <<  ";  Elapsed  time:  "  <<  elapsed  <<  endl;
  * prints the min, mean, standard dev., and max run time
 ******************************************************************/
 void multiAlgoRandomFixedVectorSort() {
-    chrono::high_resolution_clock::time_point start;
-    chrono::high_resolution_clock::time_point  end;
-    vector<double> times;
-    double mean;
-    double standardD;
-
+    chrono::high_resolution_clock::time_point start; // shared
+    chrono::high_resolution_clock::time_point  end; // shared
+    double elapsed; // shared
+    vector<double> bubbleTimes;
+    vector<double> insertTimes;
+    vector<double> selectTimes;
+    vector<double> quickTimes;
+    double mean; // shared
+    double standardD; // shared
+    
     cout << "Sorting Algorithm on 10, 100 Length Vectors" << endl;
     for (int i = 0; i < 10; i++) {
         vector<int> v = randomVector(100, 0, 100);
-        start  =  chrono::high_resolution_clock::now();
-        // call the sorting algo here
-        end = chrono::high_resolution_clock::now();
-        double elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        times[i] = elapsed;
-    }
-    // processing the time data
-    times = bubbleSort(times);
-    mean  =  0; 
-    for (int i = 0;  i < times.size(); i++){
-        mean += times[i];
-    }
-    mean = mean / times.size(); 
-    standardD = sampleSD(times);
 
-    cout << "Minimum: " << times[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
-    << standardD << " sec; Maximum: " << times[times.size() - 1] << " sec";
+        start  =  chrono::high_resolution_clock::now();
+        bubbleSort(v);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        bubbleTimes[i] = elapsed;
+
+        vector<int> v = randomVector(100, 0, 100);
+        start  =  chrono::high_resolution_clock::now();
+        insertionSort(v);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        insertTimes[i] = elapsed;
+
+        vector<int> v = randomVector(100, 0, 100);
+        start  =  chrono::high_resolution_clock::now();
+        selectionSort(v);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        selectTimes[i] = elapsed;
+
+        vector<int> v = randomVector(100, 0, 100);
+        start  =  chrono::high_resolution_clock::now();
+        quickSort(v);
+        end = chrono::high_resolution_clock::now();
+        elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
+        quickTimes[i] = elapsed;
+    }
+
+    // processing the time data and outputting
+    bubbleTimes = bubbleSort(bubbleTimes);
+    mean  =  0;
+    for (int i = 0;  i < 10; i++){
+        mean += bubbleTimes[i];
+    }
+    mean = mean / 10; 
+    standardD = sampleSD(bubbleTimes);
+
+    cout << "Bubble sort on 10 vectors of length 100" << endl;
+    cout << "Minimum: " << bubbleTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    << standardD << " sec; Maximum: " << bubbleTimes[9] << " sec" << endl;
+
+    insertTimes = bubbleSort(insertTimes);
+    mean  =  0;
+    for (int i = 0;  i < 10; i++){
+        mean += insertTimes[i];
+    }
+    mean = mean / 10;
+    standardD = sampleSD(insertTimes);
+
+    cout << "Insertion sort on 10 vectors of length 100" << endl;
+    cout << "Minimum: " << insertTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    << standardD << " sec; Maximum: " << insertTimes[9] << " sec" << endl;
+
+    selectTimes = bubbleSort(selectTimes);
+    mean  =  0;
+    for (int i = 0;  i < 10; i++){
+        mean += selectTimes[i];
+    }
+    mean = mean / 10; 
+    standardD = sampleSD(selectTimes);
+
+    cout << "Selection sort on 10 vectors of length 100" << endl;
+    cout << "Minimum: " << selectTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    << standardD << " sec; Maximum: " << selectTimes[9] << " sec" << endl;
+
+    quickTimes = bubbleSort(quickTimes);
+    mean  =  0;
+    for (int i = 0;  i < 10; i++){
+        mean += quickTimes[i];
+    }
+    mean = mean / 10; 
+    standardD = sampleSD(quickTimes);
+
+    cout << "Quick sort on 10 vectors of length 100" << endl;
+    cout << "Minimum: " << quickTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    << standardD << " sec; Maximum: " << quickTimes[9] << " sec" << endl;
 }
 
 /******************************************************************
