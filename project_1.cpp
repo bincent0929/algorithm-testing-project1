@@ -1,5 +1,5 @@
-#include <time.h> 
-#include <math.h> 
+#include <time.h>
+#include <math.h>
 #include <chrono>
 #include <vector>
 #include <iostream>
@@ -22,7 +22,7 @@ vector<T> bubbleSort(std::vector<T> v) {
                 sorted = false;
             }
         }
-        --n;
+        n--;
     }
     return v
 }
@@ -280,7 +280,7 @@ void multiAlgoRandomFixedVectorSort() {
     double mean; // shared
     double standardD; // shared
     
-    cout << "Sorting Algorithm on 10, 100 Length Vectors" << endl;
+    cout << "Sorting 10 100 length vectors are being sorted by the algorithms..." << endl;
     for (int i = 0; i < 10; i++) {
         vector<int> v = randomVector(100, 0, 100); // shared
         vector<int> sortedV; // shared
@@ -336,6 +336,7 @@ void multiAlgoRandomFixedVectorSort() {
             cout << "The current Quick sort failed" << endl;
             return;
         }
+        cout << "The 10 100 length vectors have been successfully sorted by each algorithm." << endl;
     }
 
     // processing the time data and outputting
