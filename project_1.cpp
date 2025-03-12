@@ -17,7 +17,7 @@ vector<int> bubbleSort(vector<int> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
-        for (int i = 1; v.size()-1; i++) {
+        for (int i = 1; i <= v.size()-1; i++) {
             if (v[i-1] > v[i]) {
                 int temp = v[i-1];
                 v[i-1] = v[i];
@@ -51,9 +51,9 @@ vector<int> insertionSort(vector<int> v) {
  * sorts a vector using selection sort algorithm
 ******************************************************************************/ 
 vector<int> selectionSort(vector<int> v) {
-    for (int i = 0; v.size() - 2; i++) {
+    for (int i = 0; i <= v.size() - 2; i++) {
         int uMin = i;
-        for (int j = i+1; v.size() - 1; i++) {
+        for (int j = i+1; j <= v.size() - 1; i++) {
             if (v[j] < v[uMin]) {
                 uMin = j;
             }
@@ -75,7 +75,7 @@ vector<int> quickSort(vector<int> v) {
     int pivot = v[0];
     vector<int> A;
     vector<int> B;
-    for (e in rest(v)) {
+    for (int e = 1; e ) {
         if (e <= pivot) {
             A.push_back(e);
         }
@@ -83,7 +83,7 @@ vector<int> quickSort(vector<int> v) {
             B.push_back(e);
         }
     }
-    return quickSort(A) + pivot + quickSort(B)
+    return quickSort(A) + pivot + quickSort(B);
 }
 
 /****************************************************************************** 
