@@ -110,7 +110,7 @@ vector<int> quickSort(vector<int> v) {
  * return  -  vector<int>  -  a  vector  of  random  integers
 ******************************************************************************/ 
 vector<int>  randomVector(int  size,  int  low,  int  high){ 
-    vector<int>  v(size,  0); 
+    vector<int>  v(size,  0);
     
     for  (int  i =  0; i < size;  i++){ 
         v[i]  =  rand()  %  (high  -  low  +1)  +  low; 
@@ -137,9 +137,9 @@ vector<int> sortedVector(int  size) {
  * creates a reversely sorted vector
 ******************************************************************/
 vector<int> reverseVector(int  size) {
-    vector<int>  v(size,  0); 
+    vector<int>  v(size,  0);
 
-    for  (int  i = 0; i < size;  i++) { 
+    for  (int  i = 0; i < size;  i++) {
         v[i]  =  size - i;
         // puts the value of the size of the vector at 
         // the first index and goes down from there as
@@ -149,24 +149,44 @@ vector<int> reverseVector(int  size) {
     return v;
 }
 
+//****************************************************************************************
+// ChatGPT's BS for the lower two functions: https://chatgpt.com/share/67c7733d-51cc-800a-8424-41e646e837a3
+/**
+ * This is a helper function to allow for just size to be input into the
+ * function below. I don't think these are correct yet. I need to put more
+ * time into figuring this out. I just wanted something roughly here.
+ */
+void fillIdealQuickVector(vector<int>& v, int start, int end, int& current) {
+    if (start > end) return; // base case
+    int mid = (start + end) / 2;
+    v[mid] = current++;
+    fillIdealQuickVector(v, start, mid - 1, current);
+    // left subarray
+    fillIdealQuickVector(v, mid + 1, end, current);
+    // right subarray
+}
+
 /******************************************************************
- * creates a vector that has a pivot around the middle of the array
- * this is required for the best case vector type for quick sort
+ * creates a vector that have the median value of the vector
+ * at the beginning of the vector and each subvector as the vector
+ * gets divided. I don't think that this implementation works.
+ * The vector ChatGPT says it produces isn't what I'm finding it
+ * produces in my head. the initial current value just is too high.
 ******************************************************************/
-vector<int> bestCaseQuickVector(int  size,  int  low,  int  high) {
-    vector<int>  v(size,  0); 
-
-
-
+vector<int> bestCaseQuickVector(int size) {
+    vector<int> v(size);
+    int current = 1;
+    fillIdealQuickVector(v, 0, size - 1, current);
     return v;
 }
+//****************************************************************************************
 
 /******************************************************************
  * Creates a worst case vector for the selection sort algorithm
  * needs to create a vector like: {2,4,6,8,9,7,5,3,1}
 ******************************************************************/
 vector<int> worstCaseSelectionVector(int  size,  int  low,  int  high) {
-    vector<int>  v(size,  0); 
+    vector<int>  v(size,  0);
 
 
 
