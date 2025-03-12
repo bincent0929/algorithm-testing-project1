@@ -74,8 +74,20 @@ void multiAlgoFixedVectorSort() {
  * varying length vector algorithm testing
  * worst, average, and best-case run time testing
  * rec. sizes are 10, 100, 1000, 5000, 10000
- * he says different "types" of vectors, but I'm not sure what he means by that
- * ok, I'm assuming that by "types" he means how sorted each is already
+ * vector types
+    * The average vector type is always random for each algorithm
+    * bubble: 
+        * best|sorted 
+        * worst|reversely
+    * insertion: 
+        * best|sorted 
+        * worst|reversely
+    * selection: 
+        * best|sorted 
+        * worst|"special" ex. [2, 4, 5, 3, 1]
+    * quick: 
+        * best|"when pivot equally cuts the array ~equally" 
+        * worst|"when one subarray is size one and the other is n-1 (has all the other values)"
  * For each vector size, there should be 50 generated
 ******************************************************************/
 void multiAlgoMultiVectorSort() {
