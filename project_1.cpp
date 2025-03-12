@@ -1,53 +1,42 @@
 #include <time.h> 
-#include  <math.h> 
-#include  <chrono>
+#include <math.h> 
+#include <chrono>
 #include <vector>
 
 using namespace std;
 
 /*
-* Each sorting function is pass by reference and void because there's 
-* no reason to keep the unsorted vector after processing
+* I need to change these. Apparently we do want to not change the vectors
+* we want to reuse them instead of generate new ones
 */
 
 /****************************************************************************** 
  * sorts a vector using bubble sort algorithm
 ******************************************************************************/ 
-void bubbleSort(vector<int> &v) {
+void bubbleSort(vector<int> v) {
     
 }
 
 /****************************************************************************** 
  * sorts a vector using insertion sort algorithm
 ******************************************************************************/ 
-void insertionSort(vector<int> &v) {
+void insertionSort(vector<int> v) {
     
 }
 
 /****************************************************************************** 
  * sorts a vector using selection sort algorithm
 ******************************************************************************/ 
-void selectionSort(vector<int> &v) {
+void selectionSort(vector<int> v) {
     
 }
 
 /****************************************************************************** 
  * sorts a vector using quick sort algorithm
 ******************************************************************************/ 
-void quickSort(vector<int> &v) {
+void quickSort(vector<int> v) {
     
 }
-
-/* Possible function timing solution
-chrono::high_resolution_clock::time_point start; 
-chrono::high_resolution_clock::time_point  end; 
-cout  <<  "Sieve  of  Erathosthenes  on  primes  below  100,000"  <<  endl; 
-start  =  chrono::high_resolution_clock::now(); 
-int  sum   =   sieveOfErathosthenes(100000); 
-end    =    chrono::high_resolution_clock::now(); 
-double elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count(); 
-cout  <<  "Sum:  "  <<  sum  <<  ";  Elapsed  time:  "  <<  elapsed  <<  endl; 
-*/
 
 /****************************************************************************** 
 *  Generate  a  vector  of  random  integers  in  a  given  range.  The  ends * 
@@ -134,6 +123,17 @@ bool vectorSortCheck(const vector<int> v) {
     return true;
 }
 
+/* Possible function timing solution
+chrono::high_resolution_clock::time_point start; 
+chrono::high_resolution_clock::time_point  end; 
+cout  <<  "Sieve  of  Erathosthenes  on  primes  below  100,000"  <<  endl; 
+start  =  chrono::high_resolution_clock::now(); 
+int  sum   =   sieveOfErathosthenes(100000); 
+end    =    chrono::high_resolution_clock::now(); 
+double elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count(); 
+cout  <<  "Sum:  "  <<  sum  <<  ";  Elapsed  time:  "  <<  elapsed  <<  endl; 
+*/
+
 /******************************************************************
  * fixed random value vector length algorithm testing
  * creates 10 random vectors of length 100
@@ -171,5 +171,5 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
 
 int main() {
-
+    srand(time(NULL));
 }
