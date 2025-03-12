@@ -69,7 +69,21 @@ vector<int> selectionSort(vector<int> v) {
  * sorts a vector using quick sort algorithm
 ******************************************************************************/ 
 vector<int> quickSort(vector<int> v) {
-    
+    if (v.size() <= 1) {
+        return v;
+    }
+    int pivot = v[0];
+    vector<int> A;
+    vector<int> B;
+    for (e in rest(v)) {
+        if (e <= pivot) {
+            A.push_back(e);
+        }
+        else {
+            B.push_back(e);
+        }
+    }
+    return quickSort(A) + pivot + quickSort(B)
 }
 
 /****************************************************************************** 
