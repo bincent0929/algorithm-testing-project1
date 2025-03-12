@@ -17,7 +17,7 @@ vector<int> bubbleSort(vector<int> v) {
     bool sorted = false;
     while (sorted == false) {
         sorted = true;
-        for (int i=1;v.size()-1;i++) {
+        for (int i = 1; v.size()-1; i++) {
             if (v[i-1] > v[i]) {
                 int temp = v[i-1];
                 v[i-1] = v[i];
@@ -32,8 +32,19 @@ vector<int> bubbleSort(vector<int> v) {
 /****************************************************************************** 
  * sorts a vector using insertion sort algorithm
 ******************************************************************************/ 
-void insertionSort(vector<int> v) {
-    
+vector<int> insertionSort(vector<int> v) {
+    int i = 1;
+    while (i < v.size()) {
+        int j = i;
+        while (j > 0 && v[j] < v[j-1]) {
+            int temp = v[j-1];
+            v[j-1] = v[j];
+            v[j] = temp;
+            j = j-1;
+            i = i+1;
+        }
+    }
+    return v;
 }
 
 /****************************************************************************** 
