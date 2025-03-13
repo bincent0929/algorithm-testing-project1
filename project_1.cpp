@@ -947,7 +947,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
 int main() {
     srand(time(NULL));
     
-    multiAlgoMultiSizeTypeVectorSort();
+    multiAlgoRandomFixedVectorSort();
 
     char userChoice;
     cout << "Did the initial, smaller test work? (y/n): ";
