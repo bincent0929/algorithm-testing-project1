@@ -24,7 +24,7 @@ vector<T> bubbleSort(std::vector<T> v) {
         }
         n--;
     }
-    return v
+    return v;
 }
 
 /****************************************************************************** 
@@ -338,7 +338,7 @@ void multiAlgoRandomFixedVectorSort() {
         }
     }
     cout << "The 10 100 length vectors have been successfully sorted by each algorithm." << endl;
-    
+
     // processing the time data and outputting
     bubbleTimes = bubbleSort(bubbleTimes);
     mean  =  0;

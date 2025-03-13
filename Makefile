@@ -1,2 +1,2 @@
 project_1: project_1.cpp
-        g++ -std=c++11 project_1.cpp -o project_1
+	g++ -std=c++11 project_1.cpp -o project_1
