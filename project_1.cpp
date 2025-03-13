@@ -280,7 +280,7 @@ void multiAlgoRandomFixedVectorSort() {
     double mean; // shared
     double standardD; // shared
     
-    cout << "Sorting 10 100 length vectors are being sorted by the algorithms..." << endl;
+    cout << "10 100 length vectors are being sorted by the algorithms..." << endl;
     for (int i = 0; i < 10; i++) {
         vector<int> v = randomVector(100, 0, 100); // shared
         vector<int> sortedV; // shared
@@ -336,9 +336,9 @@ void multiAlgoRandomFixedVectorSort() {
             cout << "The current Quick sort failed" << endl;
             return;
         }
-        cout << "The 10 100 length vectors have been successfully sorted by each algorithm." << endl;
     }
-
+    cout << "The 10 100 length vectors have been successfully sorted by each algorithm." << endl;
+    
     // processing the time data and outputting
     bubbleTimes = bubbleSort(bubbleTimes);
     mean  =  0;
