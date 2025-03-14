@@ -683,13 +683,11 @@ void multiAlgoMultiSizeTypeVectorSort() {
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         bestCaseFile << "selection," << vector_sizes[1] << "," << elapsed << endl;
 
-        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v2);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         worstCaseFile << "quick," << vector_sizes[1] << "," << elapsed << endl;
-        cout << "Finished quick sort." << endl;
 
         std::vector<int>().swap(v2); // clears the vector
         
@@ -714,13 +712,11 @@ void multiAlgoMultiSizeTypeVectorSort() {
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         bestCaseFile << "selection," << vector_sizes[2] << "," << elapsed << endl;
 
-        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v3);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         worstCaseFile << "quick," << vector_sizes[2] << "," << elapsed << endl;
-        cout << "Finished quick sort." << endl;
 
         std::vector<int>().swap(v3); // clears the vector
         
@@ -745,13 +741,11 @@ void multiAlgoMultiSizeTypeVectorSort() {
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         bestCaseFile << "selection," << vector_sizes[3] << "," << elapsed << endl;
 
-        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v4);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         worstCaseFile << "quick," << vector_sizes[3] << "," << elapsed << endl;
-        cout << "Finished quick sort." << endl;
 
         std::vector<int>().swap(v4); // clears the vector
         
@@ -776,13 +770,11 @@ void multiAlgoMultiSizeTypeVectorSort() {
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         bestCaseFile << "selection," << vector_sizes[4] << "," << elapsed << endl;
 
-        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v5);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1e9;
         worstCaseFile << "quick," << vector_sizes[4] << "," << elapsed << endl;
-        cout << "Finished quick sort." << endl;
 
         std::vector<int>().swap(v5); // clears the vector
 
