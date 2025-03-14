@@ -39,8 +39,8 @@ vector<int> insertionSort(vector<int> v) {
             v[j-1] = v[j];
             v[j] = temp;
             j = j-1;
-            i = i+1;
         }
+        i = i+1;
     }
     return v;
 }
@@ -51,7 +51,7 @@ vector<int> insertionSort(vector<int> v) {
 vector<int> selectionSort(vector<int> v) {
     for (int i = 0; i <= v.size() - 2; i++) {
         int uMin = i;
-        for (int j = i+1; j <= v.size() - 1; i++) {
+        for (int j = i+1; j <= v.size() - 1; j++) {
             if (v[j] < v[uMin]) {
                 uMin = j;
             }
@@ -285,55 +285,63 @@ void multiAlgoRandomFixedVectorSort() {
         vector<int> v = randomVector(100, 0, 100); // shared
         vector<int> sortedV; // shared
 
+        cout << "Bubble sorting started..." << endl;
         start  =  chrono::high_resolution_clock::now();
         sortedV = bubbleSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        bubbleTimes[i] = elapsed;
+        bubbleTimes.push_back(elapsed);
         if (vectorSortCheck(sortedV)) {
-            cout << "Current Bubble sort succeeded" << endl;
+            cout << "Current Bubble sort succeeded." << endl;
+            sortedV.clear();
         }
         else {
-            cout << "The current Bubble sort failed" << endl;
+            cout << "The current Bubble sort failed." << endl;
             return;
         }
         
+        cout << "Insertion sorting started..." << endl;
         start  =  chrono::high_resolution_clock::now();
         sortedV = insertionSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        insertTimes[i] = elapsed;
+        insertTimes.push_back(elapsed);
         if (vectorSortCheck(sortedV)) {
-            cout << "Current Insertion sort succeeded" << endl;
+            cout << "Current Insertion sort succeeded." << endl;
+            sortedV.clear();
         }
         else {
-            cout << "The current Insertion sort failed" << endl;
+            cout << "The current Insertion sort failed." << endl;
             return;
         }
 
+        cout << "Selection sorting started..." << endl;
         start  =  chrono::high_resolution_clock::now();
         sortedV = selectionSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        selectTimes[i] = elapsed;
+        selectTimes.push_back(elapsed);
         if (vectorSortCheck(sortedV)) {
-            cout << "Current Selection sort succeeded" << endl;
+            cout << "Current Selection sort succeeded." << endl;
+            sortedV.clear();
         }
         else {
-            cout << "The current Selection sort failed" << endl;
+            cout << "The current Selection sort failed." << endl;
             return;
         }
 
+        cout << "Quick sorting started..." << endl;
         start  =  chrono::high_resolution_clock::now();
         sortedV = quickSort(v);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
-        quickTimes[i] = elapsed;
+        quickTimes.push_back(elapsed);
         if (vectorSortCheck(sortedV)) {
-            cout << "Current Quick sort succeeded" << endl;
+            cout << "Current Quick sort succeeded." << endl;
+            sortedV.clear();
         }
         else {
-            cout << "The current Quick sort failed" << endl;
+            cout << "The current Quick sort failed." << endl;
             return;
         }
     }
@@ -350,7 +358,7 @@ void multiAlgoRandomFixedVectorSort() {
 
     cout << "Bubble sort on 10 vectors of length 100" << endl;
     cout << "All sorting was successful for Bubble sort" << endl;
-    cout << "Minimum: " << bubbleTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    cout << "Minimum: " << bubbleTimes[0] << " sec; Mean: " << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << bubbleTimes[9] << " sec" << endl;
 
     insertTimes = bubbleSort(insertTimes);
@@ -363,7 +371,7 @@ void multiAlgoRandomFixedVectorSort() {
 
     cout << "Insertion sort on 10 vectors of length 100" << endl;
     cout << "All sorting was successful for Insertion sort" << endl;
-    cout << "Minimum: " << insertTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    cout << "Minimum: " << insertTimes[0] << " sec; Mean: " << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << insertTimes[9] << " sec" << endl;
 
     selectTimes = bubbleSort(selectTimes);
@@ -376,7 +384,7 @@ void multiAlgoRandomFixedVectorSort() {
 
     cout << "Selection sort on 10 vectors of length 100" << endl;
     cout << "All sorting was successful for Selection sort" << endl;
-    cout << "Minimum: " << selectTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    cout << "Minimum: " << selectTimes[0] << " sec; Mean: " << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << selectTimes[9] << " sec" << endl;
 
     quickTimes = bubbleSort(quickTimes);
@@ -389,7 +397,7 @@ void multiAlgoRandomFixedVectorSort() {
 
     cout << "Quick sort on 10 vectors of length 100" << endl;
     cout << "All sorting was successful for Quick sort" << endl;
-    cout << "Minimum: " << quickTimes[0] << " sec; Mean:" << mean << "sec; Standard Deviation: "
+    cout << "Minimum: " << quickTimes[0] << " sec; Mean: " << mean << "sec; Standard Deviation: "
     << standardD << " sec; Maximum: " << quickTimes[9] << " sec" << endl;
 }
 
@@ -447,33 +455,46 @@ void multiAlgoMultiSizeTypeVectorSort() {
     cout << "Running the algorithms on random vectors..." << endl;
     while (i < 50) {
         // ********************************************************
+        cout << "Generating the smallest vector..." << endl;
         v1 = randomVector(vector_sizes[0], 0, vector_sizes[0]);
+        cout << "Vector generated." << endl;
         
+        cout << "Running the algorithms on the smallest vector..." << endl;
+        cout << "Running bubble sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         bubbleSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         averageCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished bubble sort." << endl;
 
+        cout << "Running insertion sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         averageCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished insertion sort." << endl;
         
+        cout << "Running selection sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         averageCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished selection sort." << endl;
 
+        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         averageCaseFile << "quick," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished quick sort." << endl;
 
-        std::vector<int>().swap(v1); // clears the vector
+        cout << "Clearing the vector..." << endl;
+        vector<int>().swap(v1); // clears the vector
+        cout << "Vector has been cleared" << endl;
         // ********************************************************
         v2 = randomVector(vector_sizes[1], 0, vector_sizes[1]);
 
@@ -590,6 +611,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         std::vector<int>().swap(v5); // clears the vector
 
+        cout << "Finished run #" << i + 1 << " of the random vectors." << endl;
         i++;
     }
     cout << "The algorithms are finished sorting the random vectors." << endl;
@@ -600,27 +622,38 @@ void multiAlgoMultiSizeTypeVectorSort() {
     cout << "Running insertion, selection, and bubble sorts on sorted vectors..." << endl;
     while (i < 50) {
         // ********************************************************
+        cout << "Generating the smallest vector..." << endl;
         v1 = sortedVector(vector_sizes[0]);
+        cout << "Vector generated." << endl;
         
+        cout << "Running the algorithms on the smallest vector..." << endl;
+        cout << "Running bubble sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         bubbleSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         bestCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished bubble sort." << endl;
 
+        cout << "Running insertion sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         bestCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished insertion sort." << endl;
         
+        cout << "Running selection sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         bestCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished selection sort." << endl;
 
+        cout << "Clearing the vector..." << endl;
         std::vector<int>().swap(v1); // clears the vector
+        cout << "Vector has been cleared" << endl;
         // ********************************************************
         v2 = sortedVector(vector_sizes[1]);
 
@@ -713,6 +746,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         std::vector<int>().swap(v5); // clears the vector
 
+        cout << "Finished run #" << i + 1 << " of the sorted vectors." << endl;
         i++;
     }
     cout << "The algorithms are finished sorting the sorted vectors." << endl;
@@ -723,21 +757,30 @@ void multiAlgoMultiSizeTypeVectorSort() {
     cout << "Running insertion and bubble sorts on reversely sorted vectors..." << endl;
     while (i < 50) {
         // ********************************************************
+        cout << "Generating the smallest vector..." << endl;
         v1 = reverseVector(vector_sizes[0]);
+        cout << "Vector generated." << endl;
         
+        cout << "Running the algorithms on the smallest vector..." << endl;
+        cout << "Running bubble sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         bubbleSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         worstCaseFile << "bubble," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished bubble sort." << endl;
 
+        cout << "Running insertion sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         insertionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         worstCaseFile << "insertion," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished insertion sort." << endl;
 
+        cout << "Clearing the vector..." << endl;
         std::vector<int>().swap(v1); // clears the vector
+        cout << "Vector has been cleared" << endl;
         // ********************************************************
         v2 = reverseVector(vector_sizes[1]);
 
@@ -806,6 +849,7 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         std::vector<int>().swap(v5); // clears the vector
 
+        cout << "Finished run #" << i + 1 << " of the reversed vectors." << endl;
         i++;
     }
     cout << "The algorithms are finished sorting the reversed vectors." << endl;
@@ -816,15 +860,21 @@ void multiAlgoMultiSizeTypeVectorSort() {
     cout << "Running quick sort on its best case vectors..." << endl;
     while (i < 50) {
         // ********************************************************
+        cout << "Generating the smallest vector..." << endl;
         v1 = bestCaseQuickVector(vector_sizes[0]);
+        cout << "Vector generated." << endl;
 
+        cout << "Running the algorithm on the smallest vector..." << endl;
+        cout << "Running quick sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         quickSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         bestCaseFile << "quick," << vector_sizes[0] << "," << elapsed << endl;
 
+        cout << "Clearing the vector..." << endl;
         std::vector<int>().swap(v1); // clears the vector
+        cout << "Vector has been cleared" << endl;
         // ********************************************************
         v2 = bestCaseQuickVector(vector_sizes[1]);
 
@@ -869,9 +919,10 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         std::vector<int>().swap(v5); // clears the vector
 
+        cout << "Finished run #" << i + 1 << " of the best case vectors for the quick sort algorithm." << endl;
         i++;
     }
-    cout << "The algorithm has finished sorting its best case vectors." << endl;
+    cout << "The quick sort algorithm has finished sorting its best case vectors." << endl;
     
     i = 0;
     // selection's special: provides the worst case for selection sort
@@ -879,15 +930,21 @@ void multiAlgoMultiSizeTypeVectorSort() {
     cout << "Running selection sort on its worst case vectors..." << endl;
     while (i < 50) {
         // ********************************************************
+        cout << "Generating the smallest vector..." << endl;
         v1 = worstCaseSelectionVector(vector_sizes[0], 0, vector_sizes[0]);
+        cout << "Vector generated." << endl;
         
+        cout << "Running selection sort..." << endl;
         start  =  chrono::high_resolution_clock::now();
         selectionSort(v1);
         end = chrono::high_resolution_clock::now();
         elapsed = chrono::duration_cast<chrono::duration<double>>(end - start).count();
         worstCaseFile << "selection," << vector_sizes[0] << "," << elapsed << endl;
+        cout << "Finished selection sort." << endl;
 
+        cout << "Clearing the vector..." << endl;
         std::vector<int>().swap(v1); // clears the vector
+        cout << "Vector has been cleared" << endl;
         // ********************************************************
         v2 = worstCaseSelectionVector(vector_sizes[1], 0, vector_sizes[1]);
         
@@ -932,9 +989,10 @@ void multiAlgoMultiSizeTypeVectorSort() {
 
         std::vector<int>().swap(v5); // clears the vector
 
+        cout << "Finished run #" << i + 1 << " of the worst case vectors for the selection algorithm." << endl;
         i++;
     }
-    cout << "The algorithm has finished sorting its worst case vectors." << endl;
+    cout << "The selection algorithm has finished sorting its worst case vectors." << endl;
 
     cout << "All case tests have been finished and the output has been saved to worst, " << 
     "average, and best case files." << endl;
