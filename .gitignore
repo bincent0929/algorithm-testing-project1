@@ -1,2 +1,6 @@
 project_1
 .vscode/
+average_case_times.csv
+best_case_times.csv
+worst_case_times.csv
+sample-data/
